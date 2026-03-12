@@ -21,6 +21,13 @@ const todoData = [
   },
 ]
 
+type newTodoType =
+  {
+    id: string;
+    title: string;
+    description: string;
+  }
+
 function App() {
   const [todos, setTodos] = useState(todoData)
 
@@ -29,9 +36,13 @@ function App() {
     console.log(id)
     setTodos(filterTodo)
   }
+  const handleNewTodo = (newTodo: newTodoType) => {
+    setTodos(pre => [...pre, newTodo])
+    console.log(newTodo)
+  }
   return (
     <div>
-      <AddTodo />
+      <AddTodo handleNewTodo={handleNewTodo} />
       <Todos todos={todos} handleDeleteTodo={handleDeleteTodo} />
     </div>
   )

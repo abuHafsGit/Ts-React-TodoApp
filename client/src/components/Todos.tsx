@@ -9,6 +9,8 @@ type todosType = {
     handleDeleteTodo: Function
 }
 
+
+
 function Todos({ todos, handleDeleteTodo }: todosType) {
     console.log(todos)
     return (

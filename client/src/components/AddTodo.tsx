@@ -1,6 +1,10 @@
 import React, { useState, type FormEvent } from "react"
 
-function AddTodo() {
+type handleNewTodoType = {
+    handleNewTodo: Function
+}
+
+function AddTodo(props: handleNewTodoType) {
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
 
@@ -19,7 +23,10 @@ function AddTodo() {
             title,
             description
         }
-        console.log(newTodo)
+        props.handleNewTodo(newTodo)
+        setTitle('')
+        setDescription('')
+        // console.log(newTodo)
     }
     return (
         <form onSubmit={handleSubmit}>
